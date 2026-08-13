@@ -5,11 +5,11 @@ import MainSection from "./Mainsection/MainSection";
 
 function BookARental() {
   return (
-  <>
-  <BookBanner />
-<MainSection />
+    <>
+      <BookBanner />
+      <MainSection />
 
-  </>
+    </>
   )
 }
 
