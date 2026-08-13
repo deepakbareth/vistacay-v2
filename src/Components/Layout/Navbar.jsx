@@ -114,42 +114,43 @@ const Navbar = () => {
 
                                     {/* Desktop Dropdown Menu */}
                                     {hasDropdown && (
-                                        <div className="absolute top-[80%] left-0 hidden group-hover:flex flex-col bg-neutral-900/95 backdrop-blur-md shadow-2xl border border-[#333333] rounded-lg min-w-[280px] overflow-visible py-2 animate-[fadeIn_0.2s_ease-out]">
-                                            {link.items.map((subItem) => {
-                                                const hasSubMenu = Boolean(subItem.subItems && subItem.subItems.length > 0);
+                                        // FIXED: Conditionally added 'right-0' for 'About Us' so it doesn't get cut off on the right edge
+                                        <div className={`absolute top-[80%] hidden group-hover:flex flex-col bg-neutral-900/95 backdrop-blur-md shadow-2xl border border-[#333333] rounded-lg overflow-visible py-2 animate-[fadeIn_0.2s_ease-out] ${link.name === 'About Us' ? 'left-[-90px] min-w-[240px]' : 'left-0 min-w-[280px]'}`}>                                            {link.items.map((subItem) => {
+                                            const hasSubMenu = Boolean(subItem.subItems && subItem.subItems.length > 0);
 
-                                                return (
-                                                    <div key={subItem.name} className="relative group/nested w-full">
-                                                        <Link
-                                                            to={subItem.to}
-                                                            className="px-5 py-3 w-full text-[14px] text-gray-200 hover:text-white hover:bg-white/10 transition-colors uppercase tracking-wide flex items-center justify-between"
-                                                        >
-                                                            {subItem.name}
-                                                            {/* Arrow pointing down, rotates up on hover */}
-                                                            {hasSubMenu && <ChevronDown size={14} className="group-hover/nested:rotate-180 transition-transform" />}
-                                                        </Link>
+                                            return (
+                                                <div key={subItem.name} className="relative group/nested w-full">
+                                                    <Link
+                                                        to={subItem.to}
+                                                        className="px-5 py-3 w-full text-[14px] text-gray-200 hover:text-white hover:bg-white/10 transition-colors uppercase tracking-wide flex items-center justify-between"
+                                                    >
+                                                        {subItem.name}
+                                                        {/* Arrow pointing down, rotates up on hover */}
+                                                        {hasSubMenu && <ChevronDown size={14} className="group-hover/nested:rotate-180 transition-transform" />}
+                                                    </Link>
 
-                                                        {/* Nested Desktop Dropdown (3rd Level) - Opens EXACTLY BELOW */}
-                                                        {hasSubMenu && (
-                                                            <div className="absolute top-full left-0 hidden group-hover/nested:flex flex-col bg-neutral-900/95 backdrop-blur-md shadow-2xl border border-[#333333] rounded-lg min-w-full py-2 animate-[fadeIn_0.15s_ease-out] z-50">
+                                                    {/* Nested Desktop Dropdown (3rd Level) */}
+                                                    {hasSubMenu && (
+                                                        // FIXED: shifted right with 'left-4' and reduced width to look like a proper sub-menu
+                                                        <div className="absolute top-full left-4 hidden group-hover/nested:flex flex-col bg-neutral-900/95 backdrop-blur-md shadow-2xl border border-[#333333] rounded-lg w-[248px] py-2 animate-[fadeIn_0.15s_ease-out] z-50">
 
-                                                                {/* Invisible Bridge to prevent hover from dropping */}
-                                                                <div className="absolute -top-3 left-0 w-full h-3 bg-transparent"></div>
+                                                            {/* Invisible Bridge to prevent hover from dropping */}
+                                                            <div className="absolute -top-3 left-0 w-full h-3 bg-transparent"></div>
 
-                                                                {subItem.subItems.map((nested) => (
-                                                                    <Link
-                                                                        key={nested.name}
-                                                                        to={nested.to}
-                                                                        className="px-5 py-3 text-[14px] text-gray-200 hover:text-white hover:bg-white/10 transition-colors uppercase tracking-wide"
-                                                                    >
-                                                                        {nested.name}
-                                                                    </Link>
-                                                                ))}
-                                                            </div>
-                                                        )}
-                                                    </div>
-                                                );
-                                            })}
+                                                            {subItem.subItems.map((nested) => (
+                                                                <Link
+                                                                    key={nested.name}
+                                                                    to={nested.to}
+                                                                    className="px-5 py-3 text-[14px] text-gray-200 hover:text-white hover:bg-white/10 transition-colors uppercase tracking-wide"
+                                                                >
+                                                                    {nested.name}
+                                                                </Link>
+                                                            ))}
+                                                        </div>
+                                                    )}
+                                                </div>
+                                            );
+                                        })}
                                         </div>
                                     )}
                                 </div>
