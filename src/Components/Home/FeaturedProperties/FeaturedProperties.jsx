@@ -36,7 +36,7 @@ const FeaturedProperties = () => {
                 guests: property.guests,
                 beds: property.bedrooms,
                 baths: property.bathrooms,
-                type: 'Vacation Home',
+                type: property.categoryName,
                 rating: '5.0',
                 location: 'Orlando'
               }}
