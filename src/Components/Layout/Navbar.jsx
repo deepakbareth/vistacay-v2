@@ -20,7 +20,7 @@ const Navbar = () => {
     const navLinks = [
         {
             name: 'Our Rentals',
-            to: '/vistacayinn-v2/#rentals',
+            to: '/vistacayinn-v2/#our-rentals',
             items: [
                 { name: 'All Orlando Vacation Rentals', to: '/vistacayinn-v2/#all-rentals' },
                 { name: 'Vacation Homes w/ Private Pool', to: '/vistacayinn-v2/#private-pool' },
@@ -31,7 +31,7 @@ const Navbar = () => {
             ]
         },
         {
-            name: 'VistaCay',
+            name: 'Vista Cay',
             to: '/vistacayinn-v2/#vistacay',
             items: [
                 { name: 'Communities', to: '/vistacayinn-v2/#communities' },
@@ -115,7 +115,7 @@ const Navbar = () => {
                                     {/* Desktop Dropdown Menu */}
                                     {hasDropdown && (
                                         // FIXED: Conditionally added 'right-0' for 'About Us' so it doesn't get cut off on the right edge
-                                        <div className={`absolute top-[80%] hidden group-hover:flex flex-col bg-neutral-900/95 backdrop-blur-md shadow-2xl border border-[#333333] rounded-lg overflow-visible py-2 animate-[fadeIn_0.2s_ease-out] ${link.name === 'About Us' ? 'left-[-90px] min-w-[240px]' : 'left-0 min-w-[280px]'}`}>                                            {link.items.map((subItem) => {
+                                        <div className={`absolute top-[80%] hidden group-hover:flex flex-col bg-neutral-900/95 backdrop-blur-md shadow-2xl border border-[#333333] rounded-lg overflow-visible py-2 animate-[fadeIn_0.2s_ease-out] ${link.name === 'About Us' ? 'left-[-75px] min-w-[240px]' : 'left-0 min-w-[275px]'}`}>                                            {link.items.map((subItem) => {
                                             const hasSubMenu = Boolean(subItem.subItems && subItem.subItems.length > 0);
 
                                             return (
@@ -132,7 +132,7 @@ const Navbar = () => {
                                                     {/* Nested Desktop Dropdown (3rd Level) */}
                                                     {hasSubMenu && (
                                                         // FIXED: shifted right with 'left-4' and reduced width to look like a proper sub-menu
-                                                        <div className="absolute top-full left-4 hidden group-hover/nested:flex flex-col bg-neutral-900/95 backdrop-blur-md shadow-2xl border border-[#333333] rounded-lg w-[248px] py-2 animate-[fadeIn_0.15s_ease-out] z-50">
+                                                        <div className="absolute top-full left-11 m-3 hidden group-hover/nested:flex flex-col bg-neutral-900/95 backdrop-blur-md shadow-2xl border border-[#333333] rounded-lg w-[220px] py-1 animate-[fadeIn_0.15s_ease-out] z-50">
 
                                                             {/* Invisible Bridge to prevent hover from dropping */}
                                                             <div className="absolute -top-3 left-0 w-full h-3 bg-transparent"></div>
